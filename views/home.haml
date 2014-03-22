@@ -1,0 +1,9 @@
+- if current_user
+  %a(href='/logout') Logout
+  Hello #{current_user.name}
+  - current_user.courses.each do |c|
+    %a(href="/courses/#{c.id}") #{c.name}
+- else
+  %a(href='/login') Login
+  %a(href='/signup') Signup
+

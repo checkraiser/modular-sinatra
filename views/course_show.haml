@@ -1,0 +1,24 @@
+%h3 Enrollments
+%table
+  %thead
+    %tr
+      %td id
+      %td user
+      %td Role
+  %tbody
+    - @course.enrollments.each do |e|
+      %tr
+        %td= e.id
+        %td= e.user.id
+        %td= e.role
+
+%form(action="/courses/#{@course.id}/enrollments" method="post")
+  %label(for="user2_id") Email:
+  %select(name="user2_id")
+    - User.all.each do |u|
+      %option(value="#{u.id}") #{u.email}
+  %label(for="role") Role:
+  %select(name="role")
+    - Enrollment::ENROLLMENTS.each do |role|
+      %option(value="#{role}") #{role}
+  %input(type="submit" value="Add user to course")

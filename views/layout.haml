@@ -10,5 +10,8 @@
     -#%link{:href => '/favicon.ico', :rel => 'shortcut icon'}
   %body
     #app-container
+      - [:success, :error].each do |t|
+        - if flash[t]
+          = flash[t]
       =yield
 
